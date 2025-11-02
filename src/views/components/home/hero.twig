@@ -1,0 +1,28 @@
+{# ===== ETRA Hero ===== #}
+<section class="etra-hero">
+  <div class="container etra-hero__wrap">
+    <div class="etra-hero__content">
+      <p class="etra-eyebrow">{{ theme.settings.get('hero_eyebrow') ?? 'منصة تقنية' }}</p>
+      <h2 class="etra-hero__title">
+        {{ theme.settings.get('hero_title') ?? 'ابدأ تجارتك بثيم ETRA' }}
+      </h2>
+      <p class="etra-hero__desc">
+        {{ theme.settings.get('hero_desc') ?? 'تصميم سريع وخفيف، يدعم البحث، القوائم، والهيدر اللاصق.' }}
+      </p>
+
+      <div class="etra-hero__ctas">
+        <a href="{{ theme.settings.get('hero_primary_url') ?? '#' }}" class="etra-btn etra-btn--primary">
+          {{ theme.settings.get('hero_primary_text') ?? 'ابدأ الآن' }}
+        </a>
+        <a href="{{ theme.settings.get('hero_secondary_url') ?? '#' }}" class="etra-btn etra-btn--ghost">
+          {{ theme.settings.get('hero_secondary_text') ?? 'تعرّف أكثر' }}
+        </a>
+      </div>
+    </div>
+
+    <div class="etra-hero__media">
+      <img src="{{ theme.settings.get('hero_image') ?? asset('images/placeholder/hero.png') }}"
+           alt="ETRA Hero" loading="lazy">
+    </div>
+  </div>
+</section>

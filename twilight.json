@@ -26,6 +26,54 @@
     ],
     "settings": [
         {
+  "id": "hero_eyebrow",
+  "type": "text",
+  "label": "Hero eyebrow (سطر صغير فوق العنوان)",
+  "default": "منصة تقنية"
+},
+{
+  "id": "hero_title",
+  "type": "text",
+  "label": "Hero Title (العنوان الرئيسي)",
+  "default": "ابدأ تجارتك بثيم ETRA"
+},
+{
+  "id": "hero_desc",
+  "type": "textarea",
+  "label": "Hero Description (وصف قصير)",
+  "default": "تصميم سريع وخفيف، يدعم البحث والقوائم والهيدر اللاصق."
+},
+{
+  "id": "hero_primary_text",
+  "type": "text",
+  "label": "زر رئيسي - نص",
+  "default": "ابدأ الآن"
+},
+{
+  "id": "hero_primary_url",
+  "type": "url",
+  "label": "زر رئيسي - رابط",
+  "default": "#"
+},
+{
+  "id": "hero_secondary_text",
+  "type": "text",
+  "label": "زر ثانوي - نص",
+  "default": "تعرّف أكثر"
+},
+{
+  "id": "hero_secondary_url",
+  "type": "url",
+  "label": "زر ثانوي - رابط",
+  "default": "#"
+},
+{
+  "id": "hero_image",
+  "type": "image",
+  "label": "Hero Image (صورة الهيرو)"
+},
+    
+        {
             "id": "squar_photo_bg_image_size",
             "type": "items",
             "format": "dropdown-list",

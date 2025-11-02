@@ -156,3 +156,60 @@
     border-color: rgba(158,89,205,.18);
   }
 }
+
+/* ===== Variables / Identity ===== */
+:root{
+  --etra-primary-1: #5234B7;
+  --etra-primary-2: #9E59CD;
+}
+
+.etra-topbar{
+  background: linear-gradient(90deg, var(--etra-primary-1), var(--etra-primary-2));
+  color:#fff;
+}
+.etra-sticky{ position: sticky; top:0; z-index:40; }
+.etra-glass{
+  margin:.6rem 0; padding:.6rem .8rem; border-radius:16px;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: saturate(130%) blur(10px);
+  border:1px solid rgba(82,52,183,.08);
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:.75rem;
+  box-shadow:0 6px 18px rgba(82,52,183,.08);
+}
+.etra-pill{ border-radius:999px !important; padding-inline:.65rem !important; }
+
+/* ===== Hero ===== */
+.etra-hero{
+  background:
+    radial-gradient(1000px 400px at 80% 0%, rgba(158,89,205,.18), transparent 60%),
+    linear-gradient(180deg, rgba(82,52,183,.06), transparent 60%);
+  padding: clamp(24px, 5vw, 56px) 0;
+}
+.etra-hero__wrap{
+  display:grid; grid-template-columns: 1.05fr .95fr; gap: clamp(16px, 3vw, 32px);
+  align-items:center;
+}
+.etra-eyebrow{ color: var(--etra-primary-2); font-weight:700; letter-spacing:.5px; margin-bottom:.4rem; }
+.etra-hero__title{ font-size: clamp(28px, 4.2vw, 44px); font-weight:800; line-height:1.15; margin: .2rem 0 .6rem; }
+.etra-hero__desc{ color:#555; font-size: clamp(14px, 1.6vw, 18px); max-width: 52ch; }
+
+.etra-hero__ctas{ display:flex; gap:.6rem; margin-top:1rem; flex-wrap:wrap; }
+.etra-btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.65rem 1rem; border-radius:12px; font-weight:700; }
+.etra-btn--primary{ color:#fff; background: linear-gradient(90deg, var(--etra-primary-1), var(--etra-primary-2)); }
+.etra-btn--primary:hover{ filter: brightness(1.05); }
+.etra-btn--ghost{ border:1px solid rgba(82,52,183,.25); color: var(--etra-primary-1); background:#fff; }
+.etra-btn--ghost:hover{ background:rgba(82,52,183,.06); }
+
+.etra-hero__media img{ width:100%; height:auto; border-radius:16px; box-shadow: 0 12px 30px rgba(82,52,183,.14); }
+
+@media (max-width: 1024px){
+  .etra-glass{ grid-template-columns: auto auto auto; }
+  .etra-hero__wrap{ grid-template-columns: 1fr; }
+  .etra-hero__media{ order:-1; }
+}
+@media (prefers-color-scheme: dark){
+  .etra-glass{ background: rgba(18,18,26,.55); border-color: rgba(158,89,205,.18); }
+  .etra-hero__desc{ color:#cfcfe3; }
+  .etra-hero{ background: linear-gradient(180deg, rgba(82,52,183,.2), rgba(0,0,0,.1)); }
+}
+

@@ -1,33 +1,26 @@
-{# ======================= ETRA HEADER ======================= #}
+{# ===== ETRA Clean Header ===== #}
 {% set important_links = theme.settings.get('important_links') %}
 
 <header id="etra-header" class="store-header">
-  {# Top Bar #}
+  {# Topbar اختياري #}
   <div class="etra-topbar text-sm">
     <div class="container flex items-center justify-between py-1">
       <div class="flex items-center gap-3">
-        {% if important_links %}
-          <salla-menu source="footer" topnav></salla-menu>
-        {% endif %}
+        {% if important_links %}<salla-menu source="footer" topnav></salla-menu>{% endif %}
       </div>
 
       <div class="flex items-center gap-2 header-buttons">
         {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-          <button type="button"
-                  class="btn--rounded-gray etra-pill"
-                  aria-label="localization"
-                  onclick="salla.event.dispatch('localization::open')">
+          <button class="btn--rounded-gray etra-pill" onclick="salla.event.dispatch('localization::open')">
             <span class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"></span>
-            <span class="mx-1.5">|</span>
-            <span>{{ currency.symbol }}</span>
+            <span class="mx-1.5">|</span><span>{{ currency.symbol }}</span>
           </button>
           <salla-localization-modal></salla-localization-modal>
         {% endif %}
 
         {% if store.scope %}
-          <button class="btn--rounded-gray etra-pill"
-                  onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
-            <i class="sicon-location rtl:ml-1 ltr:mr-1"></i> {{ store.scope.name }}
+          <button class="btn--rounded-gray etra-pill" onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
+            <i class="sicon-location rtl:ml-1 ltr:mr-1"></i>{{ store.scope.name }}
           </button>
         {% endif %}
 
@@ -36,31 +29,21 @@
     </div>
   </div>
 
-  {# Sticky Main Nav #}
+  {# Main Nav sticky #}
   <div class="etra-sticky">
     <div class="container">
       <div class="etra-nav etra-glass">
         <div class="flex items-center gap-3">
-          <!-- Mobile Burger -->
-          <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-1 ltr:mr-1"
-             href="#mobile-menu" aria-label="open-menu">
+          <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-1 ltr:mr-1" href="#mobile-menu" aria-label="open-menu">
             <i class="sicon-menu text-2xl"></i>
           </a>
 
-          <!-- Brand -->
-          <a class="navbar-brand flex items-center gap-2" href="{{ store.url }}">
-            <img fetchpriority="high" width="100%" height="100%" loading="eager"
-                 src="{{ store.logo }}" alt="{{ store.name }} logo" class="h-8 w-auto">
-            <span class="hidden sm:inline etra-badge">ETRA</span>
-            {% if is_page('index') %}
-              <h1 class="sr-only">{{ store.name }}</h1>
-            {% else %}
-              <h2 class="sr-only">{{ store.name }}</h2>
-            {% endif %}
-          </a>
+        <a class="navbar-brand flex items-center gap-2" href="{{ store.url }}">
+          <img src="{{ store.logo }}" alt="{{ store.name }} logo" class="h-8 w-auto" loading="eager" fetchpriority="high">
+          {% if is_page('index') %}<h1 class="sr-only">{{ store.name }}</h1>{% else %}<h2 class="sr-only">{{ store.name }}</h2>{% endif %}
+        </a>
         </div>
 
-        <!-- Center: Main menu + Search -->
         <div class="flex-1 flex items-center justify-center">
           <custom-main-menu class="hidden lg:block"></custom-main-menu>
           <div class="hidden lg:block w-[42%] mx-4">
@@ -68,18 +51,15 @@
           </div>
         </div>
 
-        <!-- Actions -->
         <div class="flex items-center gap-1">
-          <!-- Search (mobile) -->
-          <button class="header-btn lg:hidden" aria-label="search"
-                  onclick="salla.event.dispatch('search::open')">
+          <button class="header-btn lg:hidden" onclick="salla.event.dispatch('search::open')" aria-label="search">
             <i class="header-btn__icon sicon-search"></i>
           </button>
 
           {% if user.type == 'user' %}
             <salla-user-menu avatar-only show-header></salla-user-menu>
           {% else %}
-            <button class="header-btn" aria-label="login" onclick="salla.event.dispatch('login::open')">
+            <button class="header-btn" onclick="salla.event.dispatch('login::open')" aria-label="login">
               <i class="header-btn__icon sicon-user-circle"></i>
             </button>
           {% endif %}
@@ -92,7 +72,6 @@
     </div>
   </div>
 
-  <!-- Mobile search under sticky -->
   <div class="lg:hidden container mt-2">
     <salla-search inline oval height="38"></salla-search>
   </div>
@@ -101,4 +80,3 @@
 {% if store.scope %}
   <salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
 {% endif %}
-{# ===================== /ETRA HEADER ======================= #}
