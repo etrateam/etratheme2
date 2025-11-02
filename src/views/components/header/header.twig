@@ -32,16 +32,16 @@
   {# Main Nav sticky #}
   <div class="etra-sticky">
     <div class="container">
-      <div class="etra-nav etra-glass">
+      <div class="etra-glass">
         <div class="flex items-center gap-3">
           <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-1 ltr:mr-1" href="#mobile-menu" aria-label="open-menu">
             <i class="sicon-menu text-2xl"></i>
           </a>
 
-        <a class="navbar-brand flex items-center gap-2" href="{{ store.url }}">
-          <img src="{{ store.logo }}" alt="{{ store.name }} logo" class="h-8 w-auto" loading="eager" fetchpriority="high">
-          {% if is_page('index') %}<h1 class="sr-only">{{ store.name }}</h1>{% else %}<h2 class="sr-only">{{ store.name }}</h2>{% endif %}
-        </a>
+          <a class="navbar-brand flex items-center gap-2" href="{{ store.url }}">
+            <img src="{{ store.logo }}" alt="{{ store.name }} logo" class="h-8 w-auto" loading="eager" fetchpriority="high">
+            {% if is_page('index') %}<h1 class="sr-only">{{ store.name }}</h1>{% else %}<h2 class="sr-only">{{ store.name }}</h2>{% endif %}
+          </a>
         </div>
 
         <div class="flex-1 flex items-center justify-center">

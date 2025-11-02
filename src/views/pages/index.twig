@@ -6,13 +6,14 @@
 | page.slug        | string     | ex: "cat.show"
 #}
 
-{% extends 'layouts/master.twig' %}
+{% extends "layouts.master" %}
 
 {% block content %}
-  {% include 'components/home/hero.twig' %}
+  {% include "components/home/hero.twig" %}
   {% component home %}
 {% endblock %}
 
 {% block scripts %}
   <script defer src="{{ 'home.js' | asset }}"></script>
 {% endblock %}
+

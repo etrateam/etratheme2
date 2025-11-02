@@ -93,76 +93,13 @@
 @import 'lite-youtube-embed/src/lite-yt-embed.css';
 @import 'mmenu-light/dist/mmenu-light.css';
 
-/* ===== ETRA Identity ===== */
-:root{
-  --etra-primary-1: #5234B7;  /* deep violet */
-  --etra-primary-2: #9E59CD;  /* light violet */
-}
-
-.etra-topbar{
-  background: linear-gradient(90deg, var(--etra-primary-1) 0%, var(--etra-primary-2) 100%);
-  color:#fff;
-}
-
-.etra-sticky{
-  position: sticky; top: 0; z-index: 40;
-  background: transparent;
-}
-
-.etra-glass{
-  margin: .6rem 0;
-  padding: .5rem .75rem;
-  border-radius: 16px;
-  background: rgba(255,255,255,.72);
-  backdrop-filter: saturate(130%) blur(10px);
-  border: 1px solid rgba(82,52,183,.08);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: .75rem;
-  box-shadow: 0 6px 18px rgba(82,52,183,.08);
-}
-
-.etra-badge{
-  display:inline-block;
-  font-weight:700;
-  font-size:.85rem;
-  padding:.15rem .5rem;
-  border-radius:999px;
-  color:#fff;
-  background: linear-gradient(90deg, var(--etra-primary-1), var(--etra-primary-2));
-}
-
-.etra-pill{
-  border-radius:999px !important;
-  padding-inline:.65rem !important;
-}
-
-/* Hover accents */
-.header-btn__icon,
-.sicon-menu{
-  transition: transform .18s ease, color .18s ease;
-}
-.header-btn:hover .header-btn__icon,
-.sicon-menu:hover{
-  transform: translateY(-1px) scale(1.04);
-  color: var(--etra-primary-1);
-}
-
-/* Respect dark mode if theme enables it */
-@media (prefers-color-scheme: dark){
-  .etra-glass{
-    background: rgba(20,20,28,.55);
-    border-color: rgba(158,89,205,.18);
-  }
-}
-
-/* ===== Variables / Identity ===== */
+/* ===== ETRA Identity & Hero ===== */
 :root{
   --etra-primary-1: #5234B7;
   --etra-primary-2: #9E59CD;
 }
 
+/* Topbar + sticky glass nav */
 .etra-topbar{
   background: linear-gradient(90deg, var(--etra-primary-1), var(--etra-primary-2));
   color:#fff;
@@ -176,9 +113,21 @@
   display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:.75rem;
   box-shadow:0 6px 18px rgba(82,52,183,.08);
 }
+.etra-badge{
+  display:inline-block; font-weight:700; font-size:.85rem;
+  padding:.15rem .5rem; border-radius:999px; color:#fff;
+  background: linear-gradient(90deg, var(--etra-primary-1), var(--etra-primary-2));
+}
 .etra-pill{ border-radius:999px !important; padding-inline:.65rem !important; }
 
-/* ===== Hero ===== */
+/* Hover accents */
+.header-btn__icon, .sicon-menu{ transition:.18s ease; }
+.header-btn:hover .header-btn__icon, .sicon-menu:hover{
+  transform: translateY(-1px) scale(1.04);
+  color: var(--etra-primary-1);
+}
+
+/* Hero */
 .etra-hero{
   background:
     radial-gradient(1000px 400px at 80% 0%, rgba(158,89,205,.18), transparent 60%),
@@ -202,6 +151,7 @@
 
 .etra-hero__media img{ width:100%; height:auto; border-radius:16px; box-shadow: 0 12px 30px rgba(82,52,183,.14); }
 
+/* Responsive + dark */
 @media (max-width: 1024px){
   .etra-glass{ grid-template-columns: auto auto auto; }
   .etra-hero__wrap{ grid-template-columns: 1fr; }
@@ -212,4 +162,5 @@
   .etra-hero__desc{ color:#cfcfe3; }
   .etra-hero{ background: linear-gradient(180deg, rgba(82,52,183,.2), rgba(0,0,0,.1)); }
 }
+
 
