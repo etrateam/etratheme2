@@ -1,82 +1,50 @@
-{# ===== ETRA Clean Header ===== #}
-{% set important_links = theme.settings.get('important_links') %}
+{# ===== ETRA Header (pill search) ===== #}
+<header class="{{ theme.settings.get('header_is_sticky') ? 'etra-sticky' : '' }}">
+  <div class="container">
 
-<header id="etra-header" class="store-header">
-  {# Topbar اختياري #}
-  <div class="etra-topbar text-sm">
-    <div class="container flex items-center justify-between py-1">
-      <div class="flex items-center gap-3">
-        {% if important_links %}<salla-menu source="footer" topnav></salla-menu>{% endif %}
-      </div>
+    {# الشريط العلوي: لوجو + منيو + أزرار الحساب/السلة #}
+    <div class="flex items-center justify-between py-3 gap-3">
+      <a href="{{ url('/') }}" class="shrink-0">
+        {{ settings.store_logo|raw }}
+      </a>
 
-      <div class="flex items-center gap-2 header-buttons">
-        {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-          <button class="btn--rounded-gray etra-pill" onclick="salla.event.dispatch('localization::open')">
-            <span class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"></span>
-            <span class="mx-1.5">|</span><span>{{ currency.symbol }}</span>
-          </button>
-          <salla-localization-modal></salla-localization-modal>
-        {% endif %}
+      <nav class="hidden md:flex items-center gap-6">
+        {% for item in menu.main %}
+          <a href="{{ item.url }}" class="hover:text-primary-600">{{ item.title }}</a>
+        {% endfor %}
+      </nav>
 
-        {% if store.scope %}
-          <button class="btn--rounded-gray etra-pill" onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
-            <i class="sicon-location rtl:ml-1 ltr:mr-1"></i>{{ store.scope.name }}
-          </button>
-        {% endif %}
-
-        <salla-contacts is-header></salla-contacts>
+      <div class="flex items-center gap-2">
+        {% include 'components/header/user-menu.twig' ignore missing %}
+        {% include 'components/header/mini-cart.twig' ignore missing %}
       </div>
     </div>
-  </div>
 
-  {# Main Nav sticky #}
-  <div class="etra-sticky">
-    <div class="container">
-      <div class="etra-glass">
-        <div class="flex items-center gap-3">
-          <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-1 ltr:mr-1" href="#mobile-menu" aria-label="open-menu">
-            <i class="sicon-menu text-2xl"></i>
-          </a>
+    {# شريط البحث البيضاوي #}
+    <div class="etra-glass">
+      <span class="etra-badge">{{ settings.domain ?? 'salla.dev' }}</span>
 
-          <a class="navbar-brand flex items-center gap-2" href="{{ store.url }}">
-            <img src="{{ store.logo }}" alt="{{ store.name }} logo" class="h-8 w-auto" loading="eager" fetchpriority="high">
-            {% if is_page('index') %}<h1 class="sr-only">{{ store.name }}</h1>{% else %}<h2 class="sr-only">{{ store.name }}</h2>{% endif %}
-          </a>
-        </div>
+      <form action="{{ route('search') }}" method="get" class="flex items-center gap-2 w-full">
+        <input
+          class="etra-search flex-1"
+          type="search"
+          name="q"
+          placeholder="{{ trans('common.search_placeholder') }}"
+          aria-label="{{ trans('common.search_placeholder') }}"
+          value="{{ request_get('q') }}"
+        >
+        <button class="etra-pill" type="submit" aria-label="Search">
+          <i class="sicon-search text-lg"></i>
+        </button>
+      </form>
 
-        <div class="flex-1 flex items-center justify-center">
-          <custom-main-menu class="hidden lg:block"></custom-main-menu>
-          <div class="hidden lg:block w-[42%] mx-4">
-            <salla-search inline oval height="40"></salla-search>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-1">
-          <button class="header-btn lg:hidden" onclick="salla.event.dispatch('search::open')" aria-label="search">
-            <i class="header-btn__icon sicon-search"></i>
-          </button>
-
-          {% if user.type == 'user' %}
-            <salla-user-menu avatar-only show-header></salla-user-menu>
-          {% else %}
-            <button class="header-btn" onclick="salla.event.dispatch('login::open')" aria-label="login">
-              <i class="header-btn__icon sicon-user-circle"></i>
-            </button>
-          {% endif %}
-
-          <salla-cart-summary class="rtl:mr-2 ltr:ml-2">
-            <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
-          </salla-cart-summary>
-        </div>
-      </div>
+      {# رقم التواصل (اختياري) #}
+      {% if settings.store_phone %}
+        <a href="tel:{{ settings.store_phone }}" class="hidden md:flex items-center text-sm opacity-80">
+          <i class="sicon-phone mr-1"></i>{{ settings.store_phone }}
+        </a>
+      {% endif %}
     </div>
-  </div>
 
-  <div class="lg:hidden container mt-2">
-    <salla-search inline oval height="38"></salla-search>
   </div>
 </header>
-
-{% if store.scope %}
-  <salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
-{% endif %}

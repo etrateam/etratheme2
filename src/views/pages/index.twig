@@ -7,6 +7,12 @@
 #}
 
 {% extends "layouts.master" %}
+{% block content %}
+  <div style="padding:8px;background:#fffbcc;border:1px solid #f0e68c;margin:8px 0">ETRA TEST</div>
+  {% component home %}
+{% endblock %}
+
+{% extends "layouts.master" %}
 
 {% block content %}
   {% include "components/home/hero.twig" %}
