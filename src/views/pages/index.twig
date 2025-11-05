@@ -7,18 +7,19 @@
 #}
 
 {% extends "layouts.master" %}
+{% block content %}
+  <div style="padding:8px;background:#fffbcc;border:1px solid #f0e68c;margin:8px 0">ETRA TEST</div>
+  {% component home %}
+{% endblock %}
+
+{% extends "layouts.master" %}
 
 {% block content %}
-  {# (اختياري) شريط اختبار بسيط - احذفيه لاحقاً #}
-  <div style="padding:8px;background:#fffbcc;border:1px solid #f0e68c;margin:8px 0">ETRA TEST</div>
-
-  {# (اختياري) مقطع الهيرو — علّقيه إذا شكّيتي فيه #}
-  {# {% include "components/home/hero.twig" %} #}
-
-  {# المهم: هذا الذي يُظهر عناصر التخصيص في محرر سلة #}
+  {% include "components/home/hero.twig" %}
   {% component home %}
 {% endblock %}
 
 {% block scripts %}
   <script defer src="{{ 'home.js' | asset }}"></script>
 {% endblock %}
+
